@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Luxury Gold Theme */
+    --background: 30 15% 4%;
+    --foreground: 40 20% 95%;
+
+    --card: 30 10% 8%;
+    --card-foreground: 40 20% 95%;
+
+    --popover: 30 10% 8%;
+    --popover-foreground: 40 20% 95%;
+
+    /* Gold primary */
+    --primary: 43 74% 49%;
+    --primary-foreground: 30 15% 4%;
+
+    /* Deep charcoal secondary */
+    --secondary: 30 8% 12%;
+    --secondary-foreground: 40 20% 85%;
+
+    --muted: 30 8% 15%;
+    --muted-foreground: 30 10% 55%;
+
+    /* Warm gold accent */
+    --accent: 43 90% 55%;
+    --accent-foreground: 30 15% 4%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 40 20% 95%;
+
+    --border: 43 30% 20%;
+    --input: 30 8% 15%;
+    --ring: 43 74% 49%;
+
+    --radius: 0.75rem;
+
+    /* Custom luxury colors */
+    --gold: 43 74% 49%;
+    --gold-light: 43 80% 65%;
+    --gold-dark: 43 70% 35%;
+    --ivory: 40 30% 92%;
+    --obsidian: 30 15% 6%;
+
+    /* Gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(43 74% 49%), hsl(43 90% 55%), hsl(43 74% 49%));
+    --gradient-gold-shimmer: linear-gradient(90deg, transparent 0%, hsl(43 80% 65% / 0.3) 50%, transparent 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(30 15% 4%) 0%, hsl(30 10% 8%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(30 10% 10%) 0%, hsl(30 10% 6%) 100%);
+
+    /* Shadows */
+    --shadow-gold: 0 4px 30px -5px hsl(43 74% 49% / 0.3);
+    --shadow-elegant: 0 10px 40px -10px hsl(0 0% 0% / 0.5);
+    --shadow-card: 0 4px 20px -5px hsl(0 0% 0% / 0.4);
+
+    --sidebar-background: 30 15% 6%;
+    --sidebar-foreground: 40 20% 85%;
+    --sidebar-primary: 43 74% 49%;
+    --sidebar-primary-foreground: 30 15% 4%;
+    --sidebar-accent: 30 8% 12%;
+    --sidebar-accent-foreground: 40 20% 85%;
+    --sidebar-border: 43 30% 20%;
+    --sidebar-ring: 43 74% 49%;
+  }
+
+  .dark {
+    --background: 30 15% 4%;
+    --foreground: 40 20% 95%;
+    --card: 30 10% 8%;
+    --card-foreground: 40 20% 95%;
+    --popover: 30 10% 8%;
+    --popover-foreground: 40 20% 95%;
+    --primary: 43 74% 49%;
+    --primary-foreground: 30 15% 4%;
+    --secondary: 30 8% 12%;
+    --secondary-foreground: 40 20% 85%;
+    --muted: 30 8% 15%;
+    --muted-foreground: 30 10% 55%;
+    --accent: 43 90% 55%;
+    --accent-foreground: 30 15% 4%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 40 20% 95%;
+    --border: 43 30% 20%;
+    --input: 30 8% 15%;
+    --ring: 43 74% 49%;
+    
+    --gold: 43 74% 49%;
+    --gold-light: 43 80% 65%;
+    --gold-dark: 43 70% 35%;
+    --ivory: 40 30% 92%;
+    --obsidian: 30 15% 6%;
+  }
+
+  .light {
+    --background: 40 30% 98%;
+    --foreground: 30 15% 10%;
+    --card: 40 25% 96%;
+    --card-foreground: 30 15% 10%;
+    --popover: 40 25% 96%;
+    --popover-foreground: 30 15% 10%;
+    --primary: 43 74% 45%;
+    --primary-foreground: 40 30% 98%;
+    --secondary: 40 15% 90%;
+    --secondary-foreground: 30 15% 20%;
+    --muted: 40 15% 92%;
+    --muted-foreground: 30 10% 45%;
+    --accent: 43 80% 50%;
+    --accent-foreground: 30 15% 4%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 40 20% 95%;
+    --border: 43 30% 75%;
+    --input: 40 15% 92%;
+    --ring: 43 74% 45%;
+    
+    --gold: 43 74% 45%;
+    --gold-light: 43 70% 55%;
+    --gold-dark: 43 70% 35%;
+    --ivory: 40 30% 15%;
+    --obsidian: 40 25% 96%;
+
+    --sidebar-background: 40 25% 96%;
+    --sidebar-foreground: 30 15% 20%;
+    --sidebar-primary: 43 74% 45%;
+    --sidebar-primary-foreground: 40 30% 98%;
+    --sidebar-accent: 40 15% 90%;
+    --sidebar-accent-foreground: 30 15% 20%;
+    --sidebar-border: 43 30% 75%;
+    --sidebar-ring: 43 74% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer utilities {
+  .text-gold-gradient {
+    background: linear-gradient(135deg, hsl(43 74% 49%), hsl(43 90% 65%), hsl(43 74% 49%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gold-gradient {
+    background: linear-gradient(135deg, hsl(43 74% 49%), hsl(43 90% 55%), hsl(43 74% 49%));
+  }
+
+  .border-gold-gradient {
+    border-image: linear-gradient(135deg, hsl(43 74% 49%), hsl(43 90% 55%)) 1;
+  }
+
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, hsl(43 80% 65% / 0.2) 50%, transparent 100%);
+    animation: shimmer 3s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 30px hsl(43 74% 49% / 0.3), 0 0 60px hsl(43 74% 49% / 0.1);
+  }
+
+  .card-luxury {
+    background: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--background)) 100%);
+    border: 1px solid hsl(var(--border) / 0.5);
+    box-shadow: 0 4px 20px -5px hsl(0 0% 0% / 0.2);
+  }
+
+  .dark .card-luxury {
+    background: linear-gradient(145deg, hsl(30 10% 10%) 0%, hsl(30 10% 6%) 100%);
+    border: 1px solid hsl(43 30% 20% / 0.5);
+    box-shadow: 0 4px 20px -5px hsl(0 0% 0% / 0.4);
+  }
+
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 40px -10px hsl(43 74% 49% / 0.3);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.7);
+}
