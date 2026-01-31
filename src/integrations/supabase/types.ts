@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      gold_prices: {
+        Row: {
+          created_at: string
+          id: string
+          previous_price: number | null
+          price: number
+          price_date: string
+          updated_at: string
+          weight: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          previous_price?: number | null
+          price: number
+          price_date?: string
+          updated_at?: string
+          weight: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          previous_price?: number | null
+          price?: number
+          price_date?: string
+          updated_at?: string
+          weight?: string
+        }
+        Relationships: []
+      }
       orders: {
         Row: {
           confirmation_code: string | null
@@ -202,11 +232,101 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      create_order_with_payment_proof: {
+        Args: {
+          p_customer_address: string
+          p_customer_email: string
+          p_customer_name: string
+          p_customer_phone: string
+          p_order_number: string
+          p_payment_proof_url: string
+          p_product_name: string
+          p_product_price: number
+          p_product_weight: string
+          p_quantity: number
+          p_shipping_method: string
+          p_total_price: number
+        }
+        Returns: {
+          confirmation_code: string
+          id: string
+        }[]
+      }
       generate_confirmation_code: { Args: never; Returns: string }
+      get_order_by_credentials: {
+        Args: { p_confirmation_code: string; p_order_number: string }
+        Returns: {
+          created_at: string
+          id: string
+          order_number: string
+          payment_proof_url: string
+          product_name: string
+          product_price: number
+          product_weight: string
+          quantity: number
+          shipping_method: string
+          status: string
+          total_price: number
+          updated_at: string
+        }[]
+      }
+      get_order_by_order_number:
+        | {
+            Args: { p_order_number: string }
+            Returns: {
+              confirmation_code: string
+              created_at: string
+              customer_address: string
+              customer_email: string
+              customer_name: string
+              customer_phone: string
+              id: string
+              order_number: string
+              payment_proof_url: string
+              product_name: string
+              product_price: number
+              product_weight: string
+              quantity: number
+              shipping_method: string
+              status: string
+              total_price: number
+              updated_at: string
+            }[]
+          }
+        | {
+            Args: { p_confirmation_code?: string; p_order_number: string }
+            Returns: {
+              confirmation_code: string
+              created_at: string
+              customer_address: string
+              customer_email: string
+              customer_name: string
+              customer_phone: string
+              id: string
+              order_number: string
+              payment_proof_url: string
+              product_name: string
+              product_price: number
+              product_weight: string
+              quantity: number
+              shipping_method: string
+              status: string
+              total_price: number
+              updated_at: string
+            }[]
+          }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
           _user_id: string
+        }
+        Returns: boolean
+      }
+      update_payment_proof: {
+        Args: {
+          p_confirmation_code: string
+          p_order_number: string
+          p_payment_proof_url: string
         }
         Returns: boolean
       }
